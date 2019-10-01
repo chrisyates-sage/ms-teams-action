@@ -1,0 +1,10 @@
+name: 'ms-teams-action'
+description: 'action for ms teams'
+author: 'chrisyates-sage'
+inputs:
+  message:
+    description: 'Message'
+    required: false
+runs:
+  using: 'python'
+  main: 'main.py'
