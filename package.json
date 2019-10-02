@@ -1,0 +1,24 @@
+{
+  "name": "ms-teams-action",
+  "version": "1.0.0",
+  "description": "Action to send messages to MS Teams teams",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrisyates-sage/ms-teams-action.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrisyates-sage/ms-teams-action/issues"
+  },
+  "homepage": "https://github.com/chrisyates-sage/ms-teams-action#readme",
+  "dependencies": {
+    "@actions/core": "^1.1.3",
+    "@actions/github": "^1.1.0"
+  }
+}
