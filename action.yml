@@ -6,5 +6,5 @@ inputs:
     description: 'Message'
     required: false
 runs:
-  using: 'python'
-  main: 'main.py'
+  using: 'node12'
+  main: 'index.js'
