@@ -10,7 +10,7 @@ try {
 	  // Get the JSON webhook payload for the event that triggered the workflow
 	  const payload = JSON.stringify(github.context.payload, undefined, 2)
 	  console.log(`The event payload: ${payload}`);
-	  console.log(`Test1: ${payload.head_commit.message}`)
+	  console.log(`Test1: ${github.context.payload.head_commit.message}`)
 	  console.log(`Test2: ${process.env.GITHUB_REPOSITORY}`)
 	  
 } catch (error) {
