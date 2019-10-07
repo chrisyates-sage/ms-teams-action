@@ -13,4 +13,6 @@ jobs:
     steps:
     - name: Slack notification
       uses: chrisyates-sage/ms-teams-action@master
+      with:
+        teamsurl: https://outlook.office.com/webhook/4debbfbb-c394-4de0-a0eb-3cd444c9554e@3e32dd7c-41f6-492d-a1a3-c58eb02cf4f8/IncomingWebhook/2aac373336894c12b3db5d43c350af17/2b82dd20-1338-4397-807d-e05538020cef
       
