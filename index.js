@@ -45,20 +45,33 @@ try {
 	  jsondata['sections'].push(section1)
 	  
 	  const jsonout = JSON.stringify(jsondata, undefined, 2)
-	  //console.log(`data: ${jsonout}`)
+	  //console.log(jsonout)
 
-	  const myPost = async () => {
-		const rawResponse = await fetch('https://outlook.office.com/webhook/4debbfbb-c394-4de0-a0eb-3cd444c9554e@3e32dd7c-41f6-492d-a1a3-c58eb02cf4f8/IncomingWebhook/2aac373336894c12b3db5d43c350af17/2b82dd20-1338-4397-807d-e05538020cef', {
-		  method: 'POST',
-		  //headers: {
-			//'Accept': 'application/json',
-			//'Content-Type': 'application/json'
-		  //},
-		  body: jsonout
-		});
-		const response = await rawResponse.json();
-		console.log(response);
+	var url = "https://outlook.office.com/webhook/4debbfbb-c394-4de0-a0eb-3cd444c9554e@3e32dd7c-41f6-492d-a1a3-c58eb02cf4f8/IncomingWebhook/2aac373336894c12b3db5d43c350af17/2b82dd20-1338-4397-807d-e05538020cef";
+
+	const https = require('https');
+	var postData = JSON.stringify({msg: 'Hello World!'})
+    var options = {
+	   hostname: 'outlook.office.com',
+	   path: '/webhook/4debbfbb-c394-4de0-a0eb-3cd444c9554e@3e32dd7c-41f6-492d-a1a3-c58eb02cf4f8/IncomingWebhook/2aac373336894c12b3db5d43c350af17/2b82dd20-1338-4397-807d-e05538020cef',
+	   method: 'POST',
+	   headers: { 'Content-Type': 'application/json' }
 	};
+	var req = https.request(options, (res) => {
+		console.log('statusCode:', res.statusCode);
+		console.log('headers:', res.headers);
+	  
+		res.on('data', (d) => {
+		  process.stdout.write(d);
+		});
+	});
+	  
+	req.on('error', (e) => {
+		console.error(e);
+	});
+	  
+	req.write(postData);
+	req.end();
 
 } catch (error) {
 	  core.setFailed(error.message);
