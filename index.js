@@ -2,13 +2,12 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
-	  //const time = (new Date()).toTimeString();
 	  //core.setOutput("time", time);
-	  // Get the JSON webhook payload for the event that triggered the workflow
 	  const payload = JSON.stringify(github.context.payload, undefined, 2)
+	  const mymsg = core.getInput('message')
 	  jsondata = new Object()
-	  jsondata.text = `_${process.env.GITHUB_WORKFLOW}_ :- New build run from push event by`
-	  jsondata.title = `New build run triggered from ${process.env.GITHUB_REPOSITORY}`
+	  jsondata.text = `_${process.env.GITHUB_WORKFLOW}_ :- New build run from ${process.env.GITHUB_EVENT_NAME} event by`
+	  jsondata.title = `${mymsg} - triggered from ${process.env.GITHUB_REPOSITORY}`
 
 	  var action1 = {
 		'@context': 'http://schema.org',
@@ -26,9 +25,9 @@ try {
 	  }
 	  jsondata['potentialAction'] = []
 	  jsondata['potentialAction'].push(action1)
-	  jsondata['sections'] = []
 	  
 	  var section1 = new Object()
+	  jsondata['sections'] = []
 	  section1['facts'] = []
 	  section1['facts'].push(fact1)
 	  section1['facts'].push(fact2)
@@ -38,7 +37,7 @@ try {
 	  jsondata['sections'].push(section1)
 	  
 	  const jsonout = JSON.stringify(jsondata, undefined, 2)
-	  console.log(jsonout)
+	  //console.log(jsonout)
 
 	//var url = "https://outlook.office.com/webhook/4debbfbb-c394-4de0-a0eb-3cd444c9554e@3e32dd7c-41f6-492d-a1a3-c58eb02cf4f8/IncomingWebhook/2aac373336894c12b3db5d43c350af17/2b82dd20-1338-4397-807d-e05538020cef";
 	const url = core.getInput('teamsurl');
