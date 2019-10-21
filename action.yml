@@ -5,6 +5,7 @@ inputs:
   message:
     description: 'Message'
     required: false
+    default: Test started from ${{ github.event_name }}
 runs:
   using: 'node12'
   main: 'index.js'
