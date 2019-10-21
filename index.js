@@ -4,10 +4,10 @@ const github = require('@actions/github');
 try {
 	  //core.setOutput("time", time);
 	  const payload = JSON.stringify(github.context.payload, undefined, 2)
-	  const mymsg = core.getInput('message')
+	  //const mymsg = core.getInput('message')
 	  jsondata = new Object()
 	  jsondata.text = `_${process.env.GITHUB_WORKFLOW}_ :- New build run from ${process.env.GITHUB_EVENT_NAME} event by`
-	  jsondata.title = `${mymsg} - triggered from ${process.env.GITHUB_REPOSITORY}`
+	  jsondata.title = `triggered from ${process.env.GITHUB_REPOSITORY}`
 
 	  var action1 = {
 		'@context': 'http://schema.org',
